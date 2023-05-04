@@ -1,14 +1,15 @@
+Jenkinsfile (Declarative Pipeline)
 pipeline {
     agent any
     stages {
-        stage {
+        stage('Pull') {
             steps {
                 git credentialsId: 'saurabh', url: 'https://github.com/saurabh-786-user/test-repo.git'
             }
         } 
 
         stage {
-            steps {
+            steps('Deploy') {
                 sh 'docker-compose up'
             }
         }
